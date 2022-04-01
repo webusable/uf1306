@@ -1,9 +1,9 @@
-.form {
+form.form {
     width: 90%;
     text-align: center;
 }
 
-.form__field {
+form__field {
     width: 100%;
     display: flex;
     justify-content: space-between;
