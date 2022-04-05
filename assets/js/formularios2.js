@@ -5,7 +5,7 @@
 /*
     Ejemplo de función anónima (sin nombre)
     1.- Ejecuta el código cuando la página se haya cargado completamente
-    2.- al evento de click en el botón de id = 'enviarContacto'
+    2.- al evento de click en el botón de id = 'enviar'
         ejecuta la función validarFormulario()
 */
 
@@ -13,7 +13,7 @@ window.onload = function() {
 
     // Se crea un objeto
 
-    var enviarContacto = document.getElementById("enviarContacto");
+    var enviar = document.getElementById("enviar");
 
     /*
         addEventListener()
@@ -26,17 +26,16 @@ window.onload = function() {
 
     // El método addEventListener asigna las funciones a los tipos de evento
     // Evento onclick, tipo click, sobre el objeto element HTML
-    // con id 'enviarContacto'
+    // con id 'enviar'
     // Llama a la función validarFormulario()
     // que se encarga de validar el formulario
     // Se programa en la fase de burbuja (false),
     // es decir, del elemento más específico hacia afuera
 
-    enviarContacto.addEventListener('click', validarFormulario, false);
+    enviar.addEventListener('click', validarFormulario, false);
 
 }
 
-// Enunciado 2.crear una función "validarFormulario" que se ejecute al pulsar el botón enviar
 
 /*
     Función validarFormulario()
@@ -55,8 +54,8 @@ window.onload = function() {
 function validarFormulario( enviar ) {
 
     // Objetos document HTML del formulario
-    var formulario = document.getElementById("formulario")
-    var nombre = document.getElementById("nombre");
+    var formulario = document.getElementById("form")
+    var nombre = document.getElementById("name");
     var edad = document.getElementById("edad");
     var email = document.getElementById("email");
     var mensaje = document.getElementById("mensaje");
