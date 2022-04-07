@@ -17,8 +17,10 @@ window.onload = function() {
 
     /*
         addEventListener()
+
         Sintáxis:
         addEventListener( evento-a-escuchar, función-a-lanzar, booleano )
+
         Permanece a la escucha de un evento y cuando se activa ejecuta la función
     */
 
@@ -37,11 +39,15 @@ window.onload = function() {
 
 /*
     Función validarFormulario()
+
     Parámetro: objectHTMLImputElement
+
     Realiza las validaciones de los campos de formulario
     Según los requisitos del Enunciado
+
     Si todos los campos son válidos se envía el formulario
     si no, no se envía el formulario y se deshabilita el botón de enviar
+
     @return: booleano
 */
 
@@ -52,7 +58,6 @@ function validarFormulario( enviar ) {
     var nombre = document.getElementById("name");
     var edad = document.getElementById("edad");
     var email = document.getElementById("email");
-    var tfno = document.getElementById("tfno");
     var mensaje = document.getElementById("mensaje");
 
     // Resultado de la validación: por defecto, FALSE
@@ -63,7 +68,6 @@ function validarFormulario( enviar ) {
         validarSoloTexto( nombre )
         // && validarNumero( edad, 0, 120 )
         && validarEmail( email )
-        && validarTelefono( tfno )
         // && validarTextarea( mensaje, 3, 255 )
         && confirm("¿Deseas enviar el formulario con estos datos?")
     ){
@@ -82,6 +86,9 @@ function validarFormulario( enviar ) {
         // return false; // validacion sigue siendo FALSE
     }
 
+    // console.log('Error: ' + error + '\n');
+    console.log('Validación: ' + validacion + '\n');
+    console.log('----------------------------------');
     // Booleano final de la validación (true | false )
     return validacion;
 }
@@ -89,17 +96,22 @@ function validarFormulario( enviar ) {
 
 /*
     Función mensajeError()
+
     Parámetros:
         error: Number. El nº de error a mostrar en el texto de info al usuario
         name: String. El name del input que no supera la validación
         id: String. El ID del elemento que muestra el mensaje de error
+
     Agrupa todos los errores por numeros en una sóla función.
+
     Cada número de error tiene asignado un texto informativo al usuario
+
     Se obtiene un elemennto del DOM por ID donde mostrar un mensaje al usuario
         El ID de ese elemento, por defecto, es 'errores'
         Se inserta en el DOM un texto informativo sobre el fallo de validación
         Se cambia la clase de ese elemento
             para aplicar estilos CSS según el nº de error
+
     @return: Booleano
 */
 
@@ -151,11 +163,6 @@ function mensajeError ( error, elemento="", min=0, max=300, id="errores" ) {
             etiquetaInfo.innerHTML = texto;
         break;
 
-        case 4:
-            texto += "El teléfono no parece correcto. Escriba sólo números sin espacios";
-            etiquetaInfo.innerHTML = texto;
-        break;
-
         // default:
     }
 
@@ -167,11 +174,16 @@ function mensajeError ( error, elemento="", min=0, max=300, id="errores" ) {
 
 /*
     Función validarObligatorio()
+
     Parámetro: objectHTMLImputElement
+
         Comprueba si el campo es obligatorio por su atributo 'required'
         y, de serlo, también debe cumplir que contenga algo.
+
         Si no supera la condición, ejecuta el mensajeError(1) que retorna FALSE
+
         El resto de casos retorna el valor inicial TRUE
+
     @return: Booleano
 */
 
@@ -199,14 +211,18 @@ function validarObligatorio( elemento ) {
 
 /*
     Función validarSoloTexto()
+
     Parámetro: objectHTMLImputElement
+
     Comprueba si la validación supera validarObligatorio()
         De ser así, ejecuta la validación por expresión regular
+
     Si la supera retorna TRUE
+
     Si no, ejecuta el mensajeError(2) y retorna FALSE
+
     @return: Booleano
 */
-
 
 function validarSoloTexto( elemento ) {
 
@@ -254,47 +270,20 @@ function validarSoloTexto( elemento ) {
 }
 
 
-
 function validarEmail( elemento ) {
 
     var expresionRegular = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 
-
     var validacion = validarObligatorio( elemento );
 
     switch ( validacion ) {
 
         case true:
-
             var resultadoExpRegular = expresionRegular.exec( elemento.value );
 
             if ( !resultadoExpRegular ) {
+
                 validacion = mensajeError( 3, elemento );
-            }
-        break;
-    }
-
-    return validacion;
-}
-
-
-
-
-
-function validarTelefono( elemento ) {
-
-    var expresionRegular = /^[6-9]{1}[0-9]{8}$/;
-
-    var validacion = validarObligatorio( elemento );
-
-    switch ( validacion ) {
-
-        case true:
-
-            var resultadoExpRegular = expresionRegular.exec( elemento.value );
-
-            if ( !resultadoExpRegular ) {
-                validacion = mensajeError( 4, elemento );
             }
         break;
     }
