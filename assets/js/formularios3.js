@@ -33,7 +33,24 @@ function validarFormulario () {
         rules: {
             name: {
                 required: true,
-                alfabeto: true
+                alfabeto: true,
+                maxLength: 50
+            },
+            email : {
+                required: true,
+                email: true
+            },
+            edad: {
+                required: true,
+                digits: true,
+                min: 18,
+                max:120
+            }
+        },
+        messages: {
+            name: {
+                required: "El campo nombre es obligatorio",
+                alfabeto: "El nombre sólo puede contener letras del alfabeto español y espacios en blanco"
             }
         }
     });
