@@ -59,7 +59,7 @@
             <article>
                 <h2>Formulario de Contacto</h2>
 
-                <form action="enviado.html" method="post" class="form" id="form">
+                <form action="enviado.html" method="post" class="form" id="form" onsubmit="funcionSubmit(event)">
                     <fieldset>
                         <legend>Formulario de Contacto</legend>
                         <ul>
@@ -81,7 +81,7 @@
                                 <label for="tfno">Teléfono</label>
                                 <input type="text"
                                     placeholder="Teléfono"
-                                    name="tfno" id="tfno" required />
+                                    name="tfno" id="tfno" />
                             </li>
                             <li>
                                 <label for="edad">Edad</label>
