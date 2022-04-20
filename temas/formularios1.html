@@ -57,9 +57,9 @@
             </header>
 
             <article>
-                <h2>Formulario de Contacto</h2>
+                <h3>Formulario de Contacto</h3>
 
-                <form action="enviado.html" method="post" class="form" id="form" onsubmit="funcionSubmit(event)">
+                <form action="enviado.html" method="post" class="form" id="form">
                     <fieldset>
                         <legend>Formulario de Contacto</legend>
                         <ul>
@@ -120,6 +120,40 @@
                         </li>
                         <li>
                             <input type="reset" value="Borrar" />
+                        </li>
+                    </ul>
+                </form>
+            </article>
+
+            <article>
+                <h3>Cambiar contraseña</h3>
+                <form action="enviado.html" method="post" class="form" id="cambiarclave">
+                    <fieldset>
+                        <legend>Resetear contraseña</legend>
+                        <ul>
+                            <li>
+                                <label for="usuario">Usuario</label>
+                                <input type="email" name="usuario" id="usuario"
+                                    placeholder="Tu cuenta de correo" />
+                            </li>
+                            <li>
+                                <label for="contrasinal">Nueva contraseña</label>
+                                <input type="password" name="contrasinal" id="contrasinal"
+                                    placeholder="Contraseña" />
+                            </li>
+                            <li>
+                                <label for="repetircontrasinal">Repetir contraseña</label>
+                                <input type="password" name="repetircontrasinal" id="repetircontrasinal"
+                                    placeholder="Misma contraseña" />
+                            </li>
+                        </ul>
+                    </fieldset>
+                    <ul class="enviar">
+                        <li>
+                            <input type="submit" id="cambiarcontrasinal" value="Cambiar contraseña" />
+                        </li>
+                        <li>
+                            <input type="reset" value="Borrar"/>
                         </li>
                     </ul>
                 </form>

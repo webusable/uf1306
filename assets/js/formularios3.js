@@ -11,6 +11,7 @@
 
 window.onload = function() {
     $("#enviar").on("click", validarFormulario);
+    $("#cambiarcontrasinal").on("click", validarNuevoPass);
 }
 
 
@@ -20,6 +21,9 @@ $(
         // y espacios en blanco
 
         const expAlfabeto = /^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/;
+
+        // Expresión regular para aceptar sóllo números de 9 cifras
+        // que empiezen por 6, 7, 8 o 9
         const expTelefono = /^[6-9]{1}[0-9]{8}$/;
 
         $.validator.addMethod('alfabeto', function(value, element) {
@@ -31,20 +35,11 @@ $(
     }
 );
 
-// $(
-//     function() {
-//         // Espresión regular para aceptar sólo teléfonos españoles
-//         // sin prefijo internacional
-//
-//         var expresionRegular = /^[6-9]{1}[0-9]{8}$/;
-//
-//         $.validator.addMethod('telefono', function(value, element) {
-//             return this.optional(element) || expresionRegular.test(value);
-//         })
-//     }
-// );
+function validarNuevoPass() {
+    $('#cambiarclave').validate({
 
-
+    });
+}
 
 function validarFormulario() {
     $('#form').validate({
@@ -97,11 +92,6 @@ function validarFormulario() {
                 minLength: "El mensaje debe tener al menos 5 caracteres",
                 maxLength: "El mensaje no puede exceder de 255 caracters"
             },
-            submitHandler: function(form, event) {
-                event.preventDefault();
-                $(form).ajaxSubmit();
-                return false;
-            }
         }
     });
 }
